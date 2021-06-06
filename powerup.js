@@ -4,10 +4,12 @@ function Powerup() {
 
   this.pickup = function() {
     ship.lives++;
+    assets.heal.play();
     powerups.splice(powerups.indexOf(this), 1);
   };
 
   this.break = function() {
+    assets.explosion.play();
     for (let i = 0; i < 10; i++) {
       particles.push(new Particle(this.pos.x, this.pos.y, this.radius));
     }

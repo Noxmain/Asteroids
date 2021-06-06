@@ -27,6 +27,7 @@ function Asteroid() {
       {score += 1;}
     }
 
+    if (increase_score) {assets.explosion.play();} else {assets.hurt.play();}
     for (let i = 0; i < 10; i++) {
       particles.push(new Particle(this.pos.x, this.pos.y, this.radius));
     }

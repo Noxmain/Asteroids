@@ -8,6 +8,17 @@ let frames = 0;
 let startframes;
 let reset_score = false;
 let reset_lives = false;
+let assets = {};
+
+function preload() {
+  // soundFormats("wav");
+  assets.shoot = loadSound("assets/shoot.wav");
+  assets.explosion = loadSound("assets/explosion.wav");
+  assets.hurt = loadSound("assets/hurt.wav");
+  assets.heal = loadSound("assets/heal.wav");
+  assets.dead = loadSound("assets/dead.wav");
+  assets.restart = loadSound("assets/restart.wav");
+}
 
 function pythagoras(a, b) {
   return Math.sqrt(a * a + b * b);
@@ -16,6 +27,13 @@ function pythagoras(a, b) {
 function setup() {
   createCanvas(600, 600);
   ship = new Ship();
+
+  assets.shoot.setVolume(0.3);
+  assets.explosion.setVolume(0.5);
+  assets.hurt.setVolume(0.6);
+  assets.heal.setVolume(0.5);
+  assets.dead.setVolume(0.2);
+  assets.restart.setVolume(0.5);
 }
 
 function draw() {
@@ -66,6 +84,8 @@ function keyPressed() {
     if (ship.lives > 0) {
       ship.shoot();
     } else if (frames > startframes + 100) {
+      assets.dead.stop();
+      assets.restart.play();
       startframes = undefined;
       reset_score = true;
       reset_lives = true;
