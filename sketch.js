@@ -25,6 +25,7 @@ function pythagoras(a, b) {
 }
 
 function setup() {
+  console.log("Asteroids Sounds");
   createCanvas(600, 600);
   ship = new Ship();
 
