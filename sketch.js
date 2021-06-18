@@ -27,6 +27,7 @@ function pythagoras(a, b) {
 
 function setup() {
   console.log("Asteroids Sounds");
+  console.log("Press m to mute/unmute");
   createCanvas(600, 600);
   ship = new Ship();
 
@@ -103,7 +104,7 @@ function keyPressed() {
       frames = 0;
     }
   }
-  if (key == "s") {
+  if (key == "m") {
     SOUND = !SOUND;
   }
 }
