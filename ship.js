@@ -13,7 +13,7 @@ function Ship() {
 
   this.shoot = function() {
     bullets.push(new Bullet(this.pos.x, this.pos.y, this.r));
-    assets.shoot.play();
+    if (SOUND) {assets.shoot.play();}
   };
 
   this.update = function() {
@@ -35,7 +35,7 @@ function Ship() {
           particles.push(new Particle(30 * this.lives + 50 - width / 2, 100 - width / 2, 15));
         }
 
-        if (this.lives == 0) {startframes = frames; assets.dead.loop();}
+        if (SOUND) {if (this.lives == 0) {startframes = frames; assets.dead.loop();}}
       }
     }
 

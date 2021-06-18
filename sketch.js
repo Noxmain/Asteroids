@@ -9,6 +9,7 @@ let startframes;
 let reset_score = false;
 let reset_lives = false;
 let assets = {};
+let SOUND = true;
 
 function preload() {
   // soundFormats("wav");
@@ -86,7 +87,7 @@ function keyPressed() {
       ship.shoot();
     } else if (frames > startframes + 100) {
       assets.dead.stop();
-      assets.restart.play();
+      if (SOUND) {assets.restart.play();}
       startframes = undefined;
       reset_score = true;
       reset_lives = true;
@@ -101,5 +102,8 @@ function keyPressed() {
       bullets = [];
       frames = 0;
     }
+  }
+  if (key == "s") {
+    SOUND = !SOUND;
   }
 }
